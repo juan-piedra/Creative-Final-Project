@@ -72,3 +72,13 @@ main {
 .info {
   max-width: 65ch;
 }
+
+.goto {
+  text-decoration: underline;
+  color: #1a5fb4;
+  cursor: pointer;
+}
+
+.goto:hover {
+  color: #0b3a7a;
+}
