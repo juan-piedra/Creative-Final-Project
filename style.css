@@ -135,7 +135,7 @@ main {
 }
 
 body.home,
-body.place {
+body.page {
   --field: #1f4437;
   --field-deep: #162f26;
   --paper: #eee8d6;
@@ -167,9 +167,9 @@ body.place {
 body.home h1,
 body.home h2,
 body.home h3,
-body.place h1,
-body.place h2,
-body.place h3 {
+body.page h1,
+body.page h2,
+body.page h3 {
   font-family: var(--font-display);
   font-weight: 400;
 }
@@ -180,7 +180,7 @@ body.home a:focus-visible {
 }
 
 body.home header,
-body.place header {
+body.page header {
   background-color: var(--field-deep);
   border-bottom: 3px solid var(--brass);
 }
@@ -380,7 +380,7 @@ body.home .card h3 {
 
 @media (max-width: 700px) {
   body.home,
-  body.place {
+  body.page {
     --shadow-rest: 4px 4px 0 var(--field-deep);
     --shadow-hover: 6px 6px 0 var(--brass);
   }
@@ -436,18 +436,18 @@ body.home .card h3 {
   }
 }
 
-body.place {
+body.page {
   --page-gutter: clamp(8px, 2vw, 32px);
-  --size-place-text: clamp(1.0625rem, 0.8rem + 0.9vw, 1.5rem);
+  --size-sheet-text: clamp(1.0625rem, 0.8rem + 0.9vw, 1.5rem);
 }
 
-body.place nav {
+body.page nav {
   max-width: 1200px;
   padding-right: var(--page-gutter);
   padding-left: var(--page-gutter);
 }
 
-body.place nav > a {
+body.page nav > a {
   padding: 8px 0;
   color: var(--paper);
   font-family: var(--font-display);
@@ -455,7 +455,7 @@ body.place nav > a {
   text-decoration: none;
 }
 
-body.place nav ul a {
+body.page nav ul a {
   display: inline-block;
   padding: 8px 4px;
   color: var(--paper);
@@ -463,19 +463,19 @@ body.place nav ul a {
   text-decoration: none;
 }
 
-body.place nav a:hover {
+body.page nav a:hover {
   text-decoration: underline;
   text-decoration-color: var(--brass);
   text-decoration-thickness: 3px;
   text-underline-offset: 8px;
 }
 
-body.place a:focus-visible {
+body.page a:focus-visible {
   outline: 3px solid var(--brass);
   outline-offset: 4px;
 }
 
-body.place .hero {
+body.page .hero {
   display: block;
   width: min(calc(100% - 2 * var(--page-gutter)), 720px);
   height: auto;
@@ -486,12 +486,12 @@ body.place .hero {
   box-shadow: var(--shadow-rest);
 }
 
-body.place main {
+body.page main {
   max-width: 1200px;
   padding: 0 var(--page-gutter) 80px;
 }
 
-body.place h1 {
+body.page h1 {
   margin: 0;
   padding: 32px 0 32px;
   color: var(--paper);
@@ -501,30 +501,52 @@ body.place h1 {
   text-wrap: balance;
 }
 
-body.place .info {
+body.page .person-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 4vw, 48px);
+  margin: 0;
+  padding: 48px 0 40px;
+}
+
+body.page .person-header img {
+  width: clamp(150px, 22vw, 224px);
+  padding: 12px;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-rest);
+}
+
+body.page .person-header h1 {
+  padding: 0;
+  text-align: left;
+}
+
+body.page .info {
   max-width: none;
   padding: clamp(16px, 3.5vw, 48px);
   background-color: var(--paper);
   color: var(--ink);
   border: 2px solid var(--ink);
   box-shadow: var(--shadow-rest);
-  font-size: var(--size-place-text);
+  font-size: var(--size-sheet-text);
   line-height: 1.65;
 }
 
-body.place .info > p {
+body.page .info > p {
   margin: 0 0 16px;
 }
 
-body.place .info section {
+body.page .info section {
   margin: 48px 0 0;
 }
 
-body.place .info > section:first-child {
+body.page .info > section:first-child {
   margin-top: 0;
 }
 
-body.place .info h2 {
+body.page .info h2 {
   margin: 0 0 16px;
   color: var(--field);
   font-size: var(--size-title);
@@ -532,68 +554,78 @@ body.place .info h2 {
   text-wrap: balance;
 }
 
-body.place .info h3 {
+body.page .info h3 {
   margin: 24px 0 12px;
   color: var(--field);
   font-size: var(--size-text-lg);
   line-height: 1.2;
 }
 
-body.place .info section p {
+body.page .info section p {
   margin: 0 0 16px;
 }
 
-body.place .info section p:last-child {
+body.page .info section p:last-child {
   margin-bottom: 0;
 }
 
-body.place .info ul {
+body.page .info ul {
   margin: 0;
   padding-left: 24px;
 }
 
-body.place .info li {
+body.page .info li {
   margin-bottom: 8px;
 }
 
-body.place .info li:last-child {
+body.page .info li:last-child {
   margin-bottom: 0;
 }
 
-body.place .info section:last-of-type {
+body.page .info section:last-of-type {
   padding-top: 32px;
   border-top: 2px solid var(--ink);
 }
 
-body.place .info > p:last-child {
+body.page .info > p:last-child {
   margin: 32px 0 0;
 }
 
-body.place .info a {
+body.page .info a {
   color: var(--field);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.18em;
 }
 
-body.place .info a:hover {
+body.page .info a:hover {
   background-color: var(--brass);
   color: var(--ink);
 }
 
-body.place .info a:focus-visible {
+body.page .info a:focus-visible {
   outline-color: var(--field);
 }
 
 @media (max-width: 700px) {
-  body.place nav {
+  body.page nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0 24px;
     padding: 8px 16px;
   }
 
-  body.place nav ul {
+  body.page nav ul {
     gap: 16px;
+  }
+
+  body.page .person-header {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 0 24px;
+  }
+
+  body.page .person-header h1 {
+    text-align: center;
   }
 }
