@@ -134,7 +134,8 @@ main {
   padding-left: 24px;
 }
 
-body.home {
+body.home,
+body.place {
   --field: #1f4437;
   --field-deep: #162f26;
   --paper: #eee8d6;
@@ -146,6 +147,7 @@ body.home {
   --font-body: "Libre Franklin", Verdana, sans-serif;
 
   --size-display: clamp(2.5rem, 1.5rem + 4.5vw, 5rem);
+  --size-page: clamp(2.25rem, 1.25rem + 3.5vw, 3.75rem);
   --size-section: clamp(2rem, 1.5rem + 2vw, 3rem);
   --size-title-lg: clamp(1.5rem, 1.1rem + 1.2vw, 2.375rem);
   --size-title: clamp(1.375rem, 1.1rem + 0.8vw, 1.875rem);
@@ -164,7 +166,10 @@ body.home {
 
 body.home h1,
 body.home h2,
-body.home h3 {
+body.home h3,
+body.place h1,
+body.place h2,
+body.place h3 {
   font-family: var(--font-display);
   font-weight: 400;
 }
@@ -174,7 +179,8 @@ body.home a:focus-visible {
   outline-offset: 4px;
 }
 
-body.home header {
+body.home header,
+body.place header {
   background-color: var(--field-deep);
   border-bottom: 3px solid var(--brass);
 }
@@ -373,7 +379,8 @@ body.home .card h3 {
 }
 
 @media (max-width: 700px) {
-  body.home {
+  body.home,
+  body.place {
     --shadow-rest: 4px 4px 0 var(--field-deep);
     --shadow-hover: 6px 6px 0 var(--brass);
   }
@@ -426,5 +433,167 @@ body.home .card h3 {
   body.home .card:hover,
   .card:hover .photo img {
     transform: none;
+  }
+}
+
+body.place {
+  --page-gutter: clamp(8px, 2vw, 32px);
+  --size-place-text: clamp(1.0625rem, 0.8rem + 0.9vw, 1.5rem);
+}
+
+body.place nav {
+  max-width: 1200px;
+  padding-right: var(--page-gutter);
+  padding-left: var(--page-gutter);
+}
+
+body.place nav > a {
+  padding: 8px 0;
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--size-text-lg);
+  text-decoration: none;
+}
+
+body.place nav ul a {
+  display: inline-block;
+  padding: 8px 4px;
+  color: var(--paper);
+  font-size: var(--size-text);
+  text-decoration: none;
+}
+
+body.place nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--brass);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+}
+
+body.place a:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 4px;
+}
+
+body.place .hero {
+  display: block;
+  width: min(calc(100% - 2 * var(--page-gutter)), 720px);
+  height: auto;
+  margin: 48px auto 0;
+  padding: 12px;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-rest);
+}
+
+body.place main {
+  max-width: 1200px;
+  padding: 0 var(--page-gutter) 80px;
+}
+
+body.place h1 {
+  margin: 0;
+  padding: 32px 0 32px;
+  color: var(--paper);
+  font-size: var(--size-page);
+  line-height: 1.1;
+  text-align: center;
+  text-wrap: balance;
+}
+
+body.place .info {
+  max-width: none;
+  padding: clamp(16px, 3.5vw, 48px);
+  background-color: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-rest);
+  font-size: var(--size-place-text);
+  line-height: 1.65;
+}
+
+body.place .info > p {
+  margin: 0 0 16px;
+}
+
+body.place .info section {
+  margin: 48px 0 0;
+}
+
+body.place .info > section:first-child {
+  margin-top: 0;
+}
+
+body.place .info h2 {
+  margin: 0 0 16px;
+  color: var(--field);
+  font-size: var(--size-title);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+body.place .info h3 {
+  margin: 24px 0 12px;
+  color: var(--field);
+  font-size: var(--size-text-lg);
+  line-height: 1.2;
+}
+
+body.place .info section p {
+  margin: 0 0 16px;
+}
+
+body.place .info section p:last-child {
+  margin-bottom: 0;
+}
+
+body.place .info ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+body.place .info li {
+  margin-bottom: 8px;
+}
+
+body.place .info li:last-child {
+  margin-bottom: 0;
+}
+
+body.place .info section:last-of-type {
+  padding-top: 32px;
+  border-top: 2px solid var(--ink);
+}
+
+body.place .info > p:last-child {
+  margin: 32px 0 0;
+}
+
+body.place .info a {
+  color: var(--field);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+body.place .info a:hover {
+  background-color: var(--brass);
+  color: var(--ink);
+}
+
+body.place .info a:focus-visible {
+  outline-color: var(--field);
+}
+
+@media (max-width: 700px) {
+  body.place nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 24px;
+    padding: 8px 16px;
+  }
+
+  body.place nav ul {
+    gap: 16px;
   }
 }
