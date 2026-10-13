@@ -134,6 +134,51 @@ main {
   padding-left: 24px;
 }
 
+body.home {
+  --field: #1f4437;
+  --field-deep: #162f26;
+  --paper: #eee8d6;
+  --ink: #16211c;
+  --brass: #d6a23f;
+  --pinstripe: rgb(238 232 214 / 0.045);
+
+  --font-display: "Rozha One", Georgia, serif;
+  --font-body: "Libre Franklin", Verdana, sans-serif;
+
+  --size-display: clamp(2.5rem, 1.5rem + 4.5vw, 5rem);
+  --size-section: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --size-title-lg: clamp(1.5rem, 1.1rem + 1.2vw, 2.375rem);
+  --size-title: clamp(1.375rem, 1.1rem + 0.8vw, 1.875rem);
+  --size-text-lg: clamp(1.125rem, 0.95rem + 0.55vw, 1.5rem);
+  --size-text: clamp(1.0625rem, 0.95rem + 0.35vw, 1.25rem);
+
+  --shadow-rest: 8px 8px 0 var(--field-deep);
+  --shadow-hover: 11px 11px 0 var(--brass);
+
+  background-color: var(--field);
+  background-image: repeating-linear-gradient(90deg, transparent 0 44px, var(--pinstripe) 44px 46px);
+  color: var(--paper);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+body.home h1,
+body.home h2,
+body.home h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+body.home a:focus-visible {
+  outline: 3px solid var(--brass);
+  outline-offset: 4px;
+}
+
+body.home header {
+  background-color: var(--field-deep);
+  border-bottom: 3px solid var(--brass);
+}
+
 body.home nav {
   max-width: none;
   justify-content: center;
@@ -145,41 +190,111 @@ body.home nav > a {
 
 body.home nav ul {
   gap: 32px;
-  font-size: 1.25rem;
+  font-size: var(--size-text);
+}
+
+body.home nav ul a {
+  display: inline-block;
+  padding: 8px 4px;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+body.home nav ul a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--brass);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
 }
 
 body.home main {
   max-width: none;
-  padding: 0 clamp(8px, 2vw, 32px) 48px;
+  padding: 0 clamp(8px, 2vw, 32px) 80px;
 }
 
 body.home h1 {
   margin: 0;
-  padding: 32px 0 12px;
+  padding: 48px 0 16px;
   text-align: center;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: var(--size-display);
   line-height: 1.1;
+  text-wrap: balance;
 }
 
 body.home main > p {
   margin: 0;
-  padding: 0 clamp(0px, 12vw, 200px) 32px;
+  padding: 0 clamp(0px, 12vw, 200px) 40px;
   text-align: center;
-  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.5rem);
-  line-height: 1.5;
+  font-size: var(--size-text-lg);
   text-wrap: balance;
-  border-bottom: 1px solid;
+  border-bottom: 5px double var(--brass);
 }
 
 body.home section h2 {
-  margin: 40px 0 24px;
-  text-align: center;
-  font-size: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 960px;
+  margin: 56px auto 32px;
+  font-size: var(--size-section);
+  line-height: 1.1;
+}
+
+body.home section h2::before,
+body.home section h2::after {
+  content: "";
+  flex: 1;
+  border-top: 2px solid var(--brass);
+}
+
+body.home #people h2 {
+  margin-top: 96px;
+}
+
+.card {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+body.home .card {
+  background-color: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: var(--shadow-rest);
+}
+
+.card .photo {
+  overflow: hidden;
+}
+
+.card .photo img {
+  transition: transform 0.4s ease-out;
+}
+
+body.home .card h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+  line-height: 1.2;
+}
+
+@media (hover: hover) {
+  body.home .card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card:hover .photo img {
+    transform: scale(1.06);
+  }
+
+  body.home .card:hover h3 {
+    text-decoration-thickness: 4px;
+  }
 }
 
 #places .card-grid {
   grid-template-columns: 1fr;
-  gap: clamp(24px, 4vw, 56px);
+  gap: clamp(32px, 5vw, 64px);
 }
 
 #places .card {
@@ -221,21 +336,19 @@ body.home section h2 {
 #places .card h3 {
   align-self: end;
   padding-bottom: 12px;
-  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.5rem);
-  line-height: 1.2;
+  font-size: var(--size-title-lg);
 }
 
 #places .card p {
   align-self: start;
-  font-size: clamp(1.125rem, 0.9rem + 0.9vw, 1.75rem);
-  line-height: 1.5;
+  font-size: var(--size-text-lg);
 }
 
 #people .card-grid {
   grid-template-columns: repeat(2, minmax(0, 420px));
   justify-content: center;
   column-gap: clamp(32px, 12vw, 260px);
-  row-gap: clamp(32px, 5vw, 80px);
+  row-gap: clamp(40px, 5vw, 80px);
   margin: 0 auto;
 }
 
@@ -245,14 +358,12 @@ body.home section h2 {
 
 #people .card h3 {
   margin: 16px 0 8px;
-  font-size: clamp(1.375rem, 1rem + 1vw, 2rem);
-  line-height: 1.2;
+  font-size: var(--size-title);
 }
 
 #people .card p {
   margin: 0 0 8px;
-  font-size: clamp(1.0625rem, 0.9rem + 0.5vw, 1.375rem);
-  line-height: 1.5;
+  font-size: var(--size-text);
 }
 
 @media (max-width: 1000px) {
@@ -262,6 +373,24 @@ body.home section h2 {
 }
 
 @media (max-width: 700px) {
+  body.home {
+    --shadow-rest: 4px 4px 0 var(--field-deep);
+    --shadow-hover: 6px 6px 0 var(--brass);
+  }
+
+  body.home h1 {
+    padding-top: 32px;
+  }
+
+  body.home section h2 {
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  body.home #people h2 {
+    margin-top: 64px;
+  }
+
   #places .card,
   #places .card:nth-child(even) {
     display: block;
@@ -288,61 +417,14 @@ body.home section h2 {
   }
 }
 
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card .photo {
-  overflow: hidden;
-}
-
-.card .photo img {
-  transition: transform 0.4s ease;
-}
-
-.card h3::after {
-  content: "\2192";
-  display: inline-block;
-  margin-left: 0.4em;
-  transition: transform 0.2s ease;
-}
-
-.card:focus-visible {
-  outline: 3px solid;
-  outline-offset: 4px;
-}
-
-@media (hover: hover) {
-  .card:hover {
-    transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 currentColor;
-  }
-
-  .card:hover .photo img {
-    transform: scale(1.06);
-  }
-
-  .card:hover h3 {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 0.2em;
-  }
-
-  .card:hover h3::after {
-    transform: translateX(8px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .card .photo img,
-  .card h3::after {
+  .card .photo img {
     transition: none;
   }
 
-  .card:hover,
-  .card:hover .photo img,
-  .card:hover h3::after {
+  body.home .card:hover,
+  .card:hover .photo img {
     transform: none;
   }
 }
