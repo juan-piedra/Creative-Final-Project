@@ -133,3 +133,80 @@ main {
 .person .info {
   padding-left: 24px;
 }
+
+#places .card-grid {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+#places .card {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  grid-template-rows: auto auto;
+  align-content: center;
+  column-gap: 16px;
+  width: 70%;
+  justify-self: start;
+}
+
+#places .card:nth-child(even) {
+  grid-template-columns: 7fr 5fr;
+  justify-self: end;
+}
+
+#places .card .photo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+#places .card:nth-child(even) .photo {
+  grid-column: 2;
+}
+
+#places .card h3,
+#places .card p {
+  grid-column: 2;
+  margin: 0;
+}
+
+#places .card h3 {
+  align-self: end;
+  padding-bottom: 8px;
+}
+
+#places .card p {
+  align-self: start;
+}
+
+#places .card:nth-child(even) h3,
+#places .card:nth-child(even) p {
+  grid-column: 1;
+}
+
+#people .card-grid {
+  grid-template-columns: repeat(2, 1fr);
+  width: 70%;
+}
+
+@media (max-width: 700px) {
+  #places .card,
+  #places .card:nth-child(even) {
+    display: block;
+    width: 100%;
+  }
+
+  #places .card h3 {
+    margin: 1em 0;
+    padding-bottom: 0;
+  }
+
+  #people .card-grid {
+    width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  #people .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
