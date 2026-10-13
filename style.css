@@ -287,3 +287,62 @@ body.home section h2 {
     grid-template-columns: 1fr;
   }
 }
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card .photo {
+  overflow: hidden;
+}
+
+.card .photo img {
+  transition: transform 0.4s ease;
+}
+
+.card h3::after {
+  content: "\2192";
+  display: inline-block;
+  margin-left: 0.4em;
+  transition: transform 0.2s ease;
+}
+
+.card:focus-visible {
+  outline: 3px solid;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 currentColor;
+  }
+
+  .card:hover .photo img {
+    transform: scale(1.06);
+  }
+
+  .card:hover h3 {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+
+  .card:hover h3::after {
+    transform: translateX(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card .photo img,
+  .card h3::after {
+    transition: none;
+  }
+
+  .card:hover,
+  .card:hover .photo img,
+  .card:hover h3::after {
+    transform: none;
+  }
+}
